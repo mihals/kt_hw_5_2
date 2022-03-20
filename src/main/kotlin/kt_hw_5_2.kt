@@ -50,16 +50,19 @@ object WallService {
 
 fun main() {
     val postOne = WallService.add(Post(text = "One"))
+    println("Индекс нового поста ${postOne.id}")
+
     val postTwo = WallService.add(Post(text = "Two"))
+    println("Индекс нового поста ${postTwo.id}")
+
     val postThree = WallService.add(Post(text = "Three"))
+    println("Индекс нового поста ${postThree.id}")
 
-    val newPostOne = postOne.copy(text = "Modified One")
     val newPostTwo = postTwo.copy(text = "Modified Two")
-    val newPostThree = postThree.copy(text = "Modified Three")
 
-    var isPostModified = WallService.update(newPostOne)
-    isPostModified = WallService.update(newPostTwo)
-    isPostModified = WallService.update(newPostThree)
+    var isPostModified = WallService.update(newPostTwo)
+    println("Метод update вернул $isPostModified")
 
     isPostModified = WallService.update(Post(id = 333))
+    println("Метод update для несуществующего поста вернул $isPostModified")
 }
